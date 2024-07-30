@@ -35,7 +35,7 @@ export const mapperPrestamo = ({ data }: PrestamoResponse): Prestamo => {
     createdAt: new Date(attributes.createdAt),
     updatedAt: new Date(attributes.updatedAt),
     publishedAt: new Date(attributes.publishedAt),
-    endDate: new Date(attributes.andDate!),
+    endDate: new Date(attributes.endDate!),
     activos: attributes?.activos
       ? attributes.activos.data.map((activo) => mapperActivo({ data: activo }))
       : [],

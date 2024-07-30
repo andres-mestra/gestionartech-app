@@ -77,7 +77,7 @@ export default function PrestamosScreen() {
                     />
                   </TableCell>
                   <TableCell align="right">
-                    {item?.andDate?.toLocaleDateString()}
+                    {item?.endDate.toLocaleDateString()}
                   </TableCell>
                   <TableCell align="right">
                     <IconButton
