@@ -107,7 +107,9 @@ export default function PrestamosScreen() {
 
 async function getPrestamos() {
   try {
-    const response = await fetch(`${API_URL}/prestamos?populate=*`)
+    const response = await fetch(
+      `${API_URL}/prestamos?populate[activos][populate][0]=image&populate[1]=user`
+    )
     const base: PrestamosResponse = await response.json()
     return base.data.map((prestamo) => mapperPrestamo({ data: prestamo }))
   } catch (error) {
