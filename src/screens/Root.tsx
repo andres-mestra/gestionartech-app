@@ -73,6 +73,7 @@ export function Root() {
         "header" 
         "section"`,
           height: '100%',
+          width: '1000px',
         }}
       >
         <AppBar sx={{ position: 'relative', gridArea: 'header' }}>
