@@ -24,8 +24,6 @@ export const mapperActivo = ({ data }: ActiveResponse): Active => {
       : undefined,
     location: attributes?.location?.data?.attributes as LocationBase,
     image: `${PUBLIC_URL}${
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
       attributes?.image?.data?.at(0)?.attributes?.formats?.medium?.url
     }`,
   }

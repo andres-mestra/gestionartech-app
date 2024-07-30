@@ -25,7 +25,7 @@ export interface ActivesResponse
       ActiveBase & {
         location?: LocationResponse
         prestamo?: PrestamoResponse
-        image?: { data: ImageResponse[] }
+        image?: ImagesResponse
       }
     >[]
   > {}
@@ -36,7 +36,7 @@ export interface ActiveResponse
       ActiveBase & {
         location?: LocationResponse
         prestamo?: PrestamoResponse
-        image?: { data?: ImageResponse[] }
+        image?: ImagesResponse
       }
     >
   > {}
@@ -62,7 +62,7 @@ export interface PrestamoResponse
 
 export interface LocationResponse extends ResponseBase<Data<LocationBase>> {}
 export interface UserResponse extends ResponseBase<Data<UserBase>> {}
-export interface ImageResponse extends ResponseBase<Data<Image>> {}
+export interface ImagesResponse extends ResponseBase<Data<Image>[]> {}
 
 export interface ActiveBase {
   placa: string
