@@ -19,7 +19,7 @@ export const mapperActivo = ({ data }: ActiveResponse): Active => {
     updatedAt: new Date(attributes.updatedAt),
     publishedAt: new Date(attributes.publishedAt),
     state: attributes?.state as ActiveState,
-    prestamo: attributes?.prestamo
+    prestamo: attributes?.prestamo?.data
       ? mapperPrestamo(attributes.prestamo)
       : undefined,
     location: attributes?.location?.data?.attributes as LocationBase,
