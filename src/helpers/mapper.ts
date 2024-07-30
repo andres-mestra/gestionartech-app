@@ -1,4 +1,3 @@
-import { PUBLIC_URL } from '@/constants'
 import { Active, ActiveState, Prestamo } from '@/types'
 import {
   ActiveResponse,
@@ -23,9 +22,7 @@ export const mapperActivo = ({ data }: ActiveResponse): Active => {
       ? mapperPrestamo(attributes.prestamo)
       : undefined,
     location: attributes?.location?.data?.attributes as LocationBase,
-    image: `${PUBLIC_URL}${
-      attributes?.image?.data?.at(0)?.attributes?.formats?.medium?.url
-    }`,
+    image: `${attributes?.image?.data?.at(0)?.attributes?.formats?.small?.url}`,
   }
 }
 
