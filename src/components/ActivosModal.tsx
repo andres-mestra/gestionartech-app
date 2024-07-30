@@ -1,6 +1,5 @@
 import { Prestamo } from '@/types'
 import {
-  Avatar,
   Chip,
   List,
   ListItem,
@@ -11,7 +10,8 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import ImageIcon from '@mui/icons-material/Image'
+import { CustomImage } from './CustomImage'
+
 interface Props {
   open: boolean
   onClose: () => void
@@ -44,9 +44,12 @@ export function ActivosModal({ open, onClose, prestamo }: Props) {
             {prestamo?.activos?.map((activo) => (
               <ListItem key={activo.id}>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                  <CustomImage
+                    src={activo?.image}
+                    alt={activo.name}
+                    width={50}
+                    height={50}
+                  />
                 </ListItemAvatar>
                 <ListItemText
                   primary={activo.name}

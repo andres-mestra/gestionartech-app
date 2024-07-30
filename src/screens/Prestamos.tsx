@@ -19,13 +19,14 @@ import {
 import AssessmentIcon from '@mui/icons-material/Assessment'
 import { LoaderTable } from '@/components/LoaderTable'
 import { ActivosModal } from '@/components/ActivosModal'
+import { RefreshButton } from '@/components/RefreshButton'
 
 export default function PrestamosScreen() {
   const [loading, setLoading] = useState(false)
   const [prestamos, setPrestamos] = useState<Prestamo[]>([])
   const [prestamo, setPrestamo] = useState<Prestamo | undefined>(undefined)
 
-  useEffect(() => {
+  function onGetPrestamos() {
     setLoading(true)
     getPrestamos()
       .then((resp) => {
@@ -34,11 +35,18 @@ export default function PrestamosScreen() {
       .finally(() => {
         setLoading(false)
       })
+  }
+
+  useEffect(() => {
+    onGetPrestamos()
   }, [])
 
   return (
     <Stack sx={{ gap: '2rem', padding: '3rem' }}>
-      <Typography variant="h3">Prestamos</Typography>
+      <Stack direction="row" justifyContent="space-between">
+        <Typography variant="h3">Prestamos</Typography>
+        <RefreshButton disabled={loading} onClick={() => onGetPrestamos()} />
+      </Stack>
       <TableContainer component={Paper}>
         {loading && <LoaderTable />}
         {!loading && (

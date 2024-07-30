@@ -18,6 +18,8 @@ import {
 
 import { useCurrency } from '@/hooks/useCurrency'
 import { LoaderTable } from '@/components/LoaderTable'
+import { RefreshButton } from '@/components/RefreshButton'
+import { CustomImage } from '@/components/CustomImage'
 
 export default function ActivosScreen() {
   const [loading, setLoading] = useState(false)
@@ -25,7 +27,7 @@ export default function ActivosScreen() {
 
   const formatter = useCurrency()
 
-  useEffect(() => {
+  function onGetActives() {
     setLoading(true)
     getActives()
       .then((resp) => {
@@ -34,17 +36,25 @@ export default function ActivosScreen() {
       .finally(() => {
         setLoading(false)
       })
+  }
+
+  useEffect(() => {
+    onGetActives()
   }, [])
 
   return (
     <Stack sx={{ gap: '2rem', padding: '3rem' }}>
-      <Typography variant="h3">Activos</Typography>
+      <Stack direction="row" justifyContent="space-between">
+        <Typography variant="h3">Activos</Typography>
+        <RefreshButton disabled={loading} onClick={() => onGetActives()} />
+      </Stack>
       <TableContainer component={Paper}>
         {loading && <LoaderTable />}
         {!loading && (
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
+                <TableCell align="right"></TableCell>
                 <TableCell>Nombre</TableCell>
                 <TableCell align="right">Placa</TableCell>
                 <TableCell align="right">Estado</TableCell>
@@ -60,6 +70,9 @@ export default function ActivosScreen() {
                   key={item.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
+                  <TableCell component="th" scope="row">
+                    <CustomImage src={item.image} alt={item.name} />
+                  </TableCell>
                   <TableCell component="th" scope="row">
                     {item.name}
                   </TableCell>

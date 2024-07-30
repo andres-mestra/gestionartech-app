@@ -5,6 +5,7 @@ export interface Active extends ActiveBase {
   state: ActiveState
   location?: LocationBase
   prestamo?: Prestamo
+  image?: string
 }
 
 export type ActiveState = 'bueno' | 'malo' | 'reparacion' | 'desuso'

@@ -25,6 +25,7 @@ export interface ActivesResponse
       ActiveBase & {
         location?: LocationResponse
         prestamo?: PrestamoResponse
+        image?: ImageResponse
       }
     >[]
   > {}
@@ -35,6 +36,7 @@ export interface ActiveResponse
       ActiveBase & {
         location?: LocationResponse
         prestamo?: PrestamoResponse
+        image?: ImageResponse
       }
     >
   > {}
@@ -60,6 +62,7 @@ export interface PrestamoResponse
 
 export interface LocationResponse extends ResponseBase<Data<LocationBase>> {}
 export interface UserResponse extends ResponseBase<Data<UserBase>> {}
+export interface ImageResponse extends ResponseBase<Data<Image>> {}
 
 export interface ActiveBase {
   placa: string
@@ -99,4 +102,24 @@ export interface UserBase {
   blocked: boolean
   createdAt: Date
   updatedAt: Date
+}
+
+export interface Image {
+  name: string
+  alternativeText?: string | null
+  formats?: ImageFormats | null
+}
+
+export interface ImageFormats {
+  thumbnail: ImageFormat
+  large: ImageFormat
+  medium: ImageFormat
+  small: ImageFormat
+}
+
+interface ImageFormat {
+  name: string
+  url: string
+  width: number
+  height: number
 }
