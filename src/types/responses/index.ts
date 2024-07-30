@@ -91,7 +91,8 @@ export interface PrestamoBase {
   createdAt: Date
   updatedAt: Date
   publishedAt: Date
-  endDate: Date
+  endDate?: Date
+  andDate?: Date
 }
 
 export interface UserBase {
