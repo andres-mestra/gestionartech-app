@@ -25,7 +25,7 @@ export interface ActivesResponse
       ActiveBase & {
         location?: LocationResponse
         prestamo?: PrestamoResponse
-        image?: ImageResponse
+        image?: { data: ImageResponse[] }
       }
     >[]
   > {}
@@ -36,7 +36,7 @@ export interface ActiveResponse
       ActiveBase & {
         location?: LocationResponse
         prestamo?: PrestamoResponse
-        image?: ImageResponse
+        image?: { data?: ImageResponse[] }
       }
     >
   > {}
